@@ -61,4 +61,22 @@ class MainTest {
   }
 
   // TODO: Create your test(s) below. /////////////////////////////////////////
+  @Test
+  void addBigram() {
+    Connection db = Main.createConnection();
+    String sourceString = "the cat in the hat";
+    int firstWord = -1;
+    int secondWord = 6;
+    assertDoesNotThrow(
+      () -> {
+        Main.createBigrams(db, sourceString);
+        assertTrue(true);
+      }
+    );
+    assertThrows(IllegalAccessException.class, () -> {
+      Main.addBigram(db, firstWord, secondWord);
+    });
+  }
+
+
 }
